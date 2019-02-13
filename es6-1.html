@@ -1,0 +1,154 @@
+<script>
+var a = 10;
+const log = console.log;
+function test(){
+    var a = 20;
+}
+
+a
+
+const c = [1,2,3];
+c.push(4);
+console.log(c);
+
+var fn = function(x,y){
+    return x + y;
+};
+
+const fn2 = (x,y) => {
+    return x+y;
+}
+
+const fn3 = (x,y) => (x+y);
+
+log(fn3(2,10));
+
+//string
+var str = "2019-02-11 12:33:34";
+log(str.substr(0,10));
+
+var str = "Hello World";
+var chkStr = "He";
+log(str.startsWith(chkStr));
+
+//Class
+//ES5
+var Human = (function(){
+    function Human(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Human.prototype.getName = function(){
+        return this.name;
+    }
+    Human.prototype.setName = function(name){
+        this.name = name;
+    }
+    return Human;
+}());
+
+var hong = new Human("홍길동", 25);
+hong.setName("ㅁㅁㅁ");
+log(hong.getName());
+
+//ES6
+class Human2 {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    getName(){
+        return this.name;
+    }
+    setName(name){
+        this.name = name;
+    }
+    showInfo(){
+        console.log(`${this.name}의 나이는 ${this.age}입니다.`);
+    }
+}
+var hong2 = new Human2("홍길동", 30);
+hong2.showInfo();
+
+//ES6
+var name = "홍길동";
+var age = 25;
+var obj = {
+    name , // name : name
+    age  // age : age
+};
+
+var json = {
+    datas : [
+        {
+            "name" : "홍길동",
+            "age" : 25
+        },
+        {
+            "name" : "홍길",
+            "age" : 25
+        },
+        {
+            "name" : "홍길순",
+            "age" : 23
+        }
+    ]
+};
+
+var [aa,bb,cc] = json.datas;   //아래와 같음
+var aa = json.datas[0];
+var bb = json.datas[1];
+var cc = json.datas[2];
+
+var [,,cc] = json.datas;   
+var cc = json.datas[2];
+
+log(aa);
+log(cc.name);
+
+var set = new Set();
+log(set);
+set.add("A");
+set.add("B");
+set.add("C");
+set.add("C");
+log(set);
+log(set.size);
+
+//weakset
+var set2 = new WeakSet();
+set2.add({});
+
+//Map
+var map = new Map();
+map.set(0, "영");
+map.set('a',"S");
+var arr = ['A', 'B', 'C'];
+var arrN = [1,2,3];
+Array.prototype.fn = function(){};
+Array.prototype.fn2 = function(){};
+for(var i in arr) {
+    log(i, arr[i]);
+}
+for (var [k,v] of arr){
+    log(k, v);
+}
+arr.forEach(function(k,v){
+    log(k,v);
+});
+
+
+function sum2(v1=100, v2=200){
+    return v1 + v2;
+}
+log(sum2(11));
+
+function sum3(...v){
+    var sum = 0;
+    for(var i = 0; i < v.length ; i++){
+        sum += v[i];
+    }
+    return sum;
+}
+log(sum3(1,2,3,4,5));
+</script>
